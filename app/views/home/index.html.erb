@@ -13,31 +13,28 @@
 <br/>
 
 <div class="panel panel-primary">
-  <div class="panel-heading">Panel PRIMARY</div>
-  <div class="panel-body"> Panel content</div>
-</div>
-<div class="panel panel-success">
-  <div class="panel-heading">Panel SUCCESS</div>
-  <div class="panel-body"> Panel content</div>
-</div>
-<div class="panel panel-info">
-      <div class="panel-heading">Panel INFO</div>
-  <div class="panel-body"> Panel content</div>
-
-</div>
-<div class="panel panel-warning">
-      <div class="panel-heading">Panel WARNING</div>
-  <div class="panel-body"> Panel content</div>
-
-</div>
-<div class="panel panel-danger">
-      <div class="panel-heading">Panel DANGER</div>
-  <div class="panel-body"> Panel content</div>
+  <div class="panel-heading"><%= @name %></div>
+  <div class="panel-body">
+    <h1><%= @username_1 %></h1>
+    <h2><%= @username_2 %></h1>
+    <h3><%= @description %></h2>
+    <p><%= @comment %></p>
+  </div>
 </div>
 
+<%= @my_table.each do |my_link|  %>
+  <li><a href="<%=  my_link  %>">Lien - <%= my_link %></a></li>
+<% end %>
 
-<ul class="nav nav-pills" role="tablist">
-  <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
-</ul>
+<h1><b>Week 4 - M of MCV</b></h1><br/>
+<% @my_curiosities = Curiosity.all %>
+
+<h2>First item of Curiosity:</h2> <%= @my_curiosities[0].name %><br/>
+
+<h2>Loop:</h2><br/>
+<% @my_curiosities.each do |curiosity| %>
+<div>
+  <p><%= curiosity.name %> - <%= curiosity.description %> <a href="<%= curiosity.image_url %>" target="_blank"><img class="picture" title="<%= curiosity.image_text %>" alt="<%= curiosity.image_text %>" src="<%= curiosity.image_url %>"></img></a></p>
+</div>
+<% end %>
+
